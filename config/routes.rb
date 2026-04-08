@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  resource :session
+  resources :passwords, param: :token
+  resources :users, only: [:new, :create] , path_names: { new: 'sign_up' }
 
   root "memos#index"
 
