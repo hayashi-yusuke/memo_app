@@ -3,18 +3,24 @@ class MemosController < ApplicationController
     @memos = Memo.all
   end
 
-  def new
-    @memo = Memo.new
+  def create
+    Memo.create(memo_params)
+    redirect_to root_path
   end
 
-  def create
-    Memo.create(text: params[:text])
-    redirect_to root_path
+  def show
+    @memo = Memo.find(params[:id])
   end
 
   def destroy
     Memo.find(params[:id]).destroy
-    #redirect_to root_path
+    redirect_to root_path
+  end
+
+  private
+
+  def memo_params
+    params.require(:memo).permit(:content)
   end
 
 end
