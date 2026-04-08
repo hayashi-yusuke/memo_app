@@ -1,0 +1,5 @@
+<h1>メモ編集</h1>
+<%= form_with model: @memo do |f| %>
+  <%= f.text_field :content, placeholder: "変更する内容を入力" %>
+  <%= f.submit "更新"%>
+<% end %>
