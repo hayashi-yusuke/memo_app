@@ -16,11 +16,28 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
- 
+  
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user),notice: "プロフィールの編集を更新しました！"
+    else
+      render :edit
+    end
+  end
+  
   private
  
   def user_params
     # name, email_address, password, password_confirmation を許可
-    params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
+    params.require(:user).permit(:name, :avater, :email_address, :password, :password_confirmation)
   end
 end
