@@ -1,5 +1,10 @@
 <h1>メモ一覧</h1>
 
+<% if Current.user.avatar.attached? %>
+  <%= image_tag Current.user.avatar, width: 50 %>
+<% end %>
+<%= link_to Current.user.name, edit_user_path(Current.user) %>
+
 <% @memos.each do |memo|%>
   <%= link_to memo.content, memo_path(memo) %>
   <%= button_to "削除", memo_path(memo), method: :delete %>
