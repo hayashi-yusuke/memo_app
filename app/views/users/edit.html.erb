@@ -1,0 +1,6 @@
+<h1>プロフィール編集</h1>
+<%= form_with model: @user, html: { multipart: true } do |f| %>
+  <%= f.text_field :name, placeholder: "名前を入力" %>
+  <%= f.file_field :avatar %>
+  <%= f.submit "更新" %>
+<% end %>
