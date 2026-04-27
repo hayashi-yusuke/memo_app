@@ -1,11 +1,11 @@
 class MemosController < ApplicationController
   def index
-    @memos = Memo.all
+    @memos = Current.user.memos
     @memo = Memo.new
   end
 
   def create
-    Memo.create(memo_params)
+    Current.user.memos.create(memo_params)
     redirect_to root_path
   end
 
