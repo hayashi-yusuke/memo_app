@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   
-  resource :session
   resources :passwords, param: :token
-  resources :users, only: [:new, :create, :show, :edit, :update] , path_names: { new: 'sign_up' }
+  resources :users, only: [:create, :show, :edit, :update]
 
+  get "sign_up", to: "users#new", as: "sign_up"
+  get "login", to: "session#new", as: "login"
+  post "login", to: "session#create"
+  delete "logout", to: "session#destroy", as: "logout"
   root "memos#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
