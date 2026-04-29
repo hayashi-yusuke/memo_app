@@ -11,8 +11,8 @@
   <% @memos.each do |memo|%>
     <div class="memo-item">
       <%= link_to memo.content, memo_path(memo) %>
-      <%= button_to "削除", memo_path(memo), method: :delete %>
-      <%= button_to "編集", edit_memo_path(memo), method: :get %>
+      <%= button_to "削除", memo_path(memo), method: :delete, class: "btn btn-danger btn-sm" %>
+      <%= button_to "編集", edit_memo_path(memo), method: :get, class: "btn btn-success btn-sm" %>
     </div>
   <% end %>
 
