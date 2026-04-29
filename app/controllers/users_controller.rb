@@ -38,6 +38,6 @@ class UsersController < ApplicationController
  
   def user_params
     # name, email_address, password, password_confirmation を許可
-    params.require(:user).permit(:name, :avater, :email_address, :password, :password_confirmation)
+    params.require(:user).permit(:name, :avatar, :email_address, :password, :password_confirmation)
   end
 end
