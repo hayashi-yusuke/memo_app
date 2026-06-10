@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # 認証をスキップ: サインアップ（new, create）はログイン前に行うため
   allow_unauthenticated_access only: [:new, :create] 
  
   def new
@@ -9,12 +8,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # ユーザー登録成功後、index画面へリダイレクト
       redirect_to root_path, notice: "ユーザー登録が完了しました！"
     else
-      # エラー時はフォームを再表示
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @users = User.all
   end
   
   def show
@@ -37,7 +38,6 @@ class UsersController < ApplicationController
   private
  
   def user_params
-    # name, email_address, password, password_confirmation を許可
     params.require(:user).permit(:name, :avatar, :email_address, :password, :password_confirmation)
   end
 end

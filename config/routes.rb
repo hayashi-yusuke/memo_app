@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :passwords, param: :token
-  resources :users, only: [:create, :show, :edit, :update]
+  resources :users, only: [:create, :index, :show, :edit, :update]
 
   get "sign_up", to: "users#new"
   get "login", to: "sessions#new"
