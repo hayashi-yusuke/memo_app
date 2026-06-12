@@ -35,7 +35,7 @@
           <%= link_to "🏠", root_path %>
         </div>
         <div class="user_index">
-          <%= button_to "ユーザー一覧", users_path %>
+          <%= button_to "ユーザー一覧", users_path, method: :get %>
         </div>
         <div class="logout">
           <% if Current.user %>
